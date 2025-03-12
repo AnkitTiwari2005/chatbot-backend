@@ -1,14 +1,14 @@
-# Use an official OpenJDK image as the base
-FROM openjdk:17
+# Use OpenJDK base image
+FROM openjdk:17-jdk-slim
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy all backend files into the container
+# Copy everything from the backend folder
 COPY . .
 
-# Compile the Java code (if needed)
-RUN javac ChatBotServer.java
+# Compile Java files with external JARs
+RUN javac -cp "libs/*" ChatBotServer.java
 
-# Run the Java application
-CMD ["java", "ChatBotServer"]
+# Run the Java application with JAR dependencies
+CMD ["java", "-cp", "libs/*:.", "ChatBotServer"]
