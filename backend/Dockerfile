@@ -9,7 +9,8 @@ COPY . .
 COPY libs/* libs/
 
 # Compile Java files with external JARs
-RUN javac -cp "libs/*" ChatBotServer.java
+RUN javac -cp "libs/json-20210307.jar:." ChatBotServer.java
+
 
 # Run the Java application with JAR dependencies
 CMD ["java", "-cp", "libs/*:.", "ChatBotServer"]
