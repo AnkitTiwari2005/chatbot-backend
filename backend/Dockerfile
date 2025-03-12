@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copy everything from the backend folder
 COPY . .
-COPY libs/* libs/
 
 # Compile Java files with external JARs
 RUN javac -cp "libs/json-20210307.jar:." ChatBotServer.java
